@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MDB Public Venture: The Revolutionary Alternative | MDB Capital</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --mdb-blue:       #004B87;
+    --mdb-blue-light: #418FDE;
+    --mdb-slate:      #A6BBC8;
+    --bg-dark:        #001f3d;
+    --bg-mid:         #002d57;
+    --bg-card:        rgba(0, 37, 70, 0.7);
+    --border:         rgba(65, 143, 222, 0.22);
+    --text-muted:     #A6BBC8;
+    --white:          #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── LOGO ── */
+  .mdb-logo-svg { display: flex; align-items: center; gap: 10px; }
+  .mdb-logo-mark {
+    width: 52px; height: 52px;
+    border: 2.5px solid white;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .mdb-logo-mark span { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 17px; letter-spacing: 0.5px; color: white; }
+  .mdb-logo-wordmark { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 0.12em; color: white; text-transform: uppercase; }
+  .mdb-logo-sm .mdb-logo-mark { width: 38px; height: 38px; border-width: 2px; }
+  .mdb-logo-sm .mdb-logo-mark span { font-size: 13px; }
+  .mdb-logo-sm .mdb-logo-wordmark { font-size: 15px; }
+
+  /* ── NAV ── */
+  .topbar {
+    background: #000000;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-right { font-size: 12px; color: var(--text-muted); letter-spacing: 0.04em; }
+  .topbar-right a { color: var(--mdb-blue-light); text-decoration: none; margin-left: 20px; font-weight: 600; transition: color 0.2s; }
+  .topbar-right a:hover { color: white; }
+
+  /* ── HERO ── */
+  .hero { background: var(--bg-dark); position: relative; overflow: hidden; }
+  .hero-banner-wrap { width: 100%; position: relative; }
+  .hero-banner-img { width: 100%; height: auto; display: block; }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 1100px; margin: 0 auto;
+    padding: 32px 40px 72px;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 24px;
+  }
+  .hero-tagline { font-size: 14px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.04em; }
+  .hero-tagline strong { color: var(--mdb-blue-light); font-weight: 700; }
+  .hero-cta-group { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--mdb-blue); color: white;
+    padding: 13px 28px; border-radius: 4px;
+    font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; border: 2px solid var(--mdb-blue); cursor: pointer; transition: all 0.2s;
+  }
+  .btn-primary:hover { background: #005fa8; border-color: #005fa8; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,75,135,0.45); }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: white;
+    padding: 13px 28px; border-radius: 4px;
+    font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; border: 2px solid rgba(255,255,255,0.35); cursor: pointer; transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+
+  /* ── SECTIONS ── */
+  .section { max-width: 1100px; margin: 0 auto; padding: 80px 40px; }
+  .section-divider { border: none; border-top: 1px solid var(--border); }
+  .section-label { font-size: 10px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mdb-blue-light); margin-bottom: 12px; }
+  .section-title { font-size: clamp(24px, 3vw, 34px); font-weight: 800; line-height: 1.2; color: var(--white); margin-bottom: 16px; letter-spacing: -0.01em; }
+
+  /* ── RESOURCE CARDS ── */
+  .resources-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
+
+  .resource-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 6px; padding: 32px; transition: all 0.25s; position: relative; overflow: hidden;
+  }
+  .resource-card::after {
+    content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+    background: var(--mdb-blue); opacity: 0; transition: opacity 0.25s;
+  }
+  .resource-card:hover { border-color: rgba(65,143,222,0.4); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.35); }
+  .resource-card:hover::after { opacity: 1; }
+
+  .resource-card.featured {
+    grid-column: 1 / -1;
+    display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center;
+    background: linear-gradient(135deg, rgba(0,75,135,0.3), rgba(0,37,61,0.8));
+    border-color: rgba(65,143,222,0.35);
+  }
+  .resource-card.featured::after { opacity: 1; }
+
+  .card-tag {
+    display: inline-block; background: rgba(0,75,135,0.35); color: var(--mdb-blue-light);
+    border: 1px solid rgba(65,143,222,0.3); border-radius: 3px;
+    padding: 3px 10px; font-size: 10px; font-weight: 800; letter-spacing: 0.12em;
+    text-transform: uppercase; margin-bottom: 14px;
+  }
+  .card-title { font-size: 20px; font-weight: 800; color: var(--white); margin-bottom: 12px; line-height: 1.3; letter-spacing: -0.01em; }
+  .card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.75; margin-bottom: 24px; font-weight: 400; }
+  .card-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--mdb-blue-light); font-size: 12px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: gap 0.2s, color 0.2s;
+  }
+  .card-link:hover { gap: 12px; color: white; }
+
+  /* ── SCHEDULE / MAILING SECTIONS ── */
+  .schedule-section {
+    background: linear-gradient(180deg, rgba(0,75,135,0.15) 0%, rgba(0,37,61,0.3) 100%);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  }
+  .schedule-inner { max-width: 1100px; margin: 0 auto; padding: 80px 40px; text-align: center; }
+  .schedule-title { font-size: clamp(28px, 4vw, 42px); font-weight: 800; line-height: 1.15; color: var(--white); margin: 0 auto 18px; letter-spacing: -0.02em; }
+  .schedule-title span { color: var(--mdb-blue-light); }
+  .schedule-desc { font-size: 16px; color: var(--text-muted); line-height: 1.75; max-width: 520px; margin: 0 auto 36px; font-weight: 400; }
+
+  /* ── FOOTER ── */
+  footer { background: #000000; padding: 52px 40px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; margin-bottom: 36px; flex-wrap: wrap; }
+  .footer-address { font-size: 12px; color: #aaa; line-height: 2; }
+  .footer-address a { color: #aaa; text-decoration: none; transition: color 0.2s; }
+  .footer-address a:hover { color: var(--mdb-blue-light); }
+  .footer-address strong { color: white; font-weight: 600; }
+  .footer-disclaimer { font-size: 11px; color: #aaa; line-height: 1.9; max-width: 100%; margin-bottom: 24px; font-weight: 400; }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-bottom: 28px; }
+  .footer-links a { font-size: 11px; color: #aaa; text-decoration: none; transition: color 0.2s; font-weight: 500; }
+  .footer-links a:hover { color: var(--mdb-blue-light); }
+  .footer-divider { border: none; border-top: 1px solid #1a1a1a; margin-bottom: 20px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #aaa; flex-wrap: wrap; gap: 10px; }
+  .footer-nasdaq { font-size: 11px; color: #aaa; font-weight: 700; letter-spacing: 0.08em; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .topbar { padding: 14px 20px; }
+    .topbar-right { display: none; }
+    .hero-content { padding: 24px 20px 56px; }
+    .resources-grid { grid-template-columns: 1fr; }
+    .resource-card.featured { grid-template-columns: 1fr; }
+    .schedule-inner { padding: 60px 20px; }
+    .section { padding: 60px 20px; }
+    footer { padding: 40px 20px; }
+    .footer-top { flex-direction: column; }
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-in { opacity: 0; transform: translateY(20px); animation: fadeInUp 0.65s ease forwards; }
+  @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+  .d1 { animation-delay: 0.1s; }
+  .d2 { animation-delay: 0.2s; }
+  .d3 { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- ── TOP BAR ── -->
+<nav class="topbar">
+  <div class="mdb-logo-svg">
+    <div class="mdb-logo-mark"><span>MDB</span></div>
+    <div class="mdb-logo-wordmark">Capital</div>
+  </div>
+  <div class="topbar-right">
+    NASDAQ: MDBH
+    <a href="https://www.mdb.com" target="_blank">mdb.com</a>
+    <a href="tel:9452629010">(945) 262-9010</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero-banner-wrap">
+    <img src="game-changing-cover.png" alt="The Premier Public Venture Platform — We Launch Game-Changing Companies" class="hero-banner-img"/>
+  </div>
+  <div class="hero-content">
+    <div class="hero-cta-group fade-in d1">
+      <a href="#resources" class="btn-primary">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        View Resources
+      </a>
+      <a href="https://outlook.office.com/book/TalkLivewithMDB@mdb.com/" target="_blank" class="btn-outline">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        Schedule a Call
+      </a>
+    </div>
+    <p class="hero-tagline fade-in d2"><strong>MDB Capital</strong> — NASDAQ: MDBH &nbsp;·&nbsp; Member FINRA and SIPC</p>
+  </div>
+</header>
+
+<!-- ── RESOURCES ── -->
+<section id="resources" class="section">
+  <p class="section-label">Resources</p>
+  <h2 class="section-title">Presentations &amp; Reports</h2>
+
+  <div class="resources-grid">
+
+    <!-- Featured: Revolutionary Alternative -->
+    <div class="resource-card featured">
+      <div>
+        <div class="card-tag">⭐ Featured Presentation</div>
+        <h3 class="card-title">MDB Public Venture:<br>The Revolutionary Alternative</h3>
+        <p class="card-desc">MDB creates value by transforming disruptive "Big Ideas" and exceptional early-stage companies into investable public companies — potential leaders in new business and technology categories with $1B market potential, defensible IP moat, and impact that can change lives, industries, and shape future innovation.</p>
+        <a href="#" class="btn-primary" style="font-size:12px;padding:12px 24px;">
+          <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          View / Download Investor Presentation
+        </a>
+      </div>
+      <img src="game-changing-cover.png" alt="We Launch Game-Changing Companies" style="width:200px;border-radius:6px;flex-shrink:0;"/>
+    </div>
+
+    <!-- Backtesting Report -->
+    <div class="resource-card" style="display:grid;grid-template-columns:130px 1fr;gap:22px;align-items:start;">
+      <img src="backtesting-report-cover.jpg" alt="Comprehensive Backtesting Analysis" style="width:130px;border-radius:4px;box-shadow:0 6px 20px rgba(0,0,0,0.5);"/>
+      <div>
+        <div class="card-tag">Research Report</div>
+        <h3 class="card-title">Comprehensive Backtesting Analysis of Investment Strategies</h3>
+        <p class="card-desc">Performance assessment across different MDB Capital portfolio companies. Actionable scenarios for aligning investment approaches with specific investor profiles.</p>
+        <a href="https://mcusercontent.com/a40f57bb6ed31fdb18a43d6c3/files/6aa703ff-a8cf-32a2-397f-ee7ca8014e6a/MDBH_Comprehensive_Backtesting_Analysis.pdf" target="_blank" class="card-link">
+          View / Download Report
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Family Office -->
+    <div class="resource-card" style="display:grid;grid-template-columns:130px 1fr;gap:22px;align-items:start;">
+      <img src="family-office-cover.jpg" alt="MDB Capital Management Program for Family Offices" style="width:130px;border-radius:4px;box-shadow:0 6px 20px rgba(0,0,0,0.5);"/>
+      <div>
+        <div class="card-tag">Investor Presentation</div>
+        <h3 class="card-title">A Unique Model for Family Offices</h3>
+        <p class="card-desc">MDB Capital provides Family Offices with a disciplined, structured pipeline into private placements (PPs) and IPO opportunities. Our model balances accessibility, diversification, and capital discipline while preventing overconcentration unlike traditional venture funds or passive public-market approaches.</p>
+        <a href="#" class="card-link">
+          View / Download Investor Presentation
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- QSBS Report -->
+    <div class="resource-card" style="display:grid;grid-template-columns:130px 1fr;gap:22px;align-items:start;">
+      <img src="qsbs-report-cover.jpg" alt="QSBS Section 1202 Report" style="width:130px;border-radius:4px;box-shadow:0 6px 20px rgba(0,0,0,0.5);"/>
+      <div>
+        <div class="card-tag">Tax Strategy</div>
+        <h3 class="card-title">The Benefits and Risks of QSBS Section 1202 &amp; Section 1045</h3>
+        <p class="card-desc">One of the most powerful — and most overlooked — tax advantages of investing in micro-cap and small-cap stocks. Learn how this strategy can significantly impact your outcomes.</p>
+        <a href="https://mcusercontent.com/a40f57bb6ed31fdb18a43d6c3/files/3afb0303-c5d3-31d1-d13b-dbfabb794e66/The_Benefits_and_Risks_of_QSBS_Section_1202_and_Sections_1045_When_Investing_in_Micro_Cap_and_Small_Cap_Stocks.pdf" target="_blank" class="card-link">
+          View / Download Report
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- ── MAILING LIST ── -->
+<section class="schedule-section">
+  <div class="schedule-inner">
+    <p class="section-label">Join Our Mailing List</p>
+    <h2 class="schedule-title">Keep Up with <span>MDB Capital</span></h2>
+    <p class="schedule-desc">Receive the latest information, insights and news.</p>
+    <a href="https://wkf.ms/45HCjVy" target="_blank" class="btn-primary" style="font-size:13px;padding:15px 40px;display:inline-flex;">
+      <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      Sign Up
+    </a>
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- ── SCHEDULE ── -->
+<section class="schedule-section">
+  <div class="schedule-inner">
+    <p class="section-label">Connect with MDB</p>
+    <h2 class="schedule-title">Talk Live with <span>MDB Capital</span></h2>
+    <p class="schedule-desc" style="max-width:700px;margin:0 auto 36px;">Have questions? Want to learn more about MDB and Public Venture?<br>Let's connect live.</p>
+    <a href="https://outlook.office.com/book/TalkLivewithMDB@mdb.com/" target="_blank" class="btn-primary" style="font-size:13px;padding:15px 40px;display:inline-flex;">
+      <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+      Schedule a Call with MDB
+    </a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="mdb-logo-svg mdb-logo-sm">
+        <div class="mdb-logo-mark"><span>MDB</span></div>
+        <div class="mdb-logo-wordmark">Capital</div>
+      </div>
+      <div class="footer-address">
+        <div>14135 Midway Road, Suite G-150</div>
+        <div>Addison, TX 75001</div>
+        <div><a href="tel:9452629010">(945) 262-9010</a></div>
+        <div><a href="mailto:Info@mdb.com">Info@mdb.com</a></div>
+        <div><a href="https://www.mdb.com" target="_blank">www.mdb.com</a></div>
+        <div><strong>NASDAQ: MDBH</strong></div>
+      </div>
+    </div>
+
+    <p class="footer-disclaimer">
+      <strong style="color:white">Important Notices:</strong> Investing in early stage private companies is speculative and involves risks, including illiquidity and loss of principal. Past performance is not indicative of future results. Unless clearly stated, nothing herein shall be construed to be an offer to sell, nor a solicitation of an offer to buy, any financial product. Securities trading, account management, and investment banking services are offered by MDB Capital, a registered broker-dealer and member of FINRA and SIPC. For additional information, please visit mdb.com or contact us at (945) 262-9010.
+    </p>
+
+    <div class="footer-links">
+      <a href="https://www.mdb.com/disclosures/customer-relationship-summary/" target="_blank">Customer Relationship Summary</a>
+      <a href="https://www.mdb.com/disclosures/regulation-best-interest-disclosures/" target="_blank">Regulation Best Interest Disclosures</a>
+      <a href="https://www.mdb.com/disclosures/brokerage-fees/" target="_blank">Brokerage Fees</a>
+      <a href="https://www.mdb.com/disclosures/sipc/" target="_blank">SIPC Disclosure</a>
+      <a href="https://www.mdb.com/disclosures/margin-disclosure-statement/" target="_blank">Margin Disclosure Statement</a>
+      <a href="https://www.mdb.com/disclosures/finra-public-disclosure-program/" target="_blank">FINRA Public Disclosure Program</a>
+      <a href="https://www.mdb.com/disclosures/payment-for-order-flow-practices-disclosure-of-order-execution-and-routing-practices/" target="_blank">Order Routing &amp; Payment for Order Flow Disclosure</a>
+      <a href="https://www.mdb.com/disclosures/sec-rule-606a-order-routing-reports/" target="_blank">SEC Rule 606(a) Order Routing Reports</a>
+      <a href="https://www.mdb.com/disclosures/regulation-s-p-firm-privacy-notice/" target="_blank">Regulation S-P Firm Privacy Statement</a>
+      <a href="https://www.mdb.com/disclosures/business-continuity/" target="_blank">Business Continuity Plan Disclosure Statement</a>
+      <a href="https://www.mdb.com/disclosures/options-risk-disclosure/" target="_blank">Characteristics and Risks of Standardized Options</a>
+      <a href="https://www.mdb.com/diclosures/penny-stock-risk-disclosure/" target="_blank">Penny Stock Risk Disclosure</a>
+      <a href="https://www.mdb.com/disclosures/customer-agreement/" target="_blank">Customer Agreement</a>
+      <a href="https://www.mdb.com/disclosures/sweep-program/" target="_blank">MDB Capital Cash Sweep Program</a>
+      <a href="https://www.mdb.com/financial-statements/" target="_blank">Financial Statements</a>
+      <a href="https://www.mdb.com/wp-content/uploads/2025/04/Invesco-Government-Money-Market-Funds-Resource-Class-Prospectuses.pdf" target="_blank">Invesco US Government &amp; Agency Portfolio – Resource Class</a>
+      <a href="https://www.mdb.com/disclosures/terms-of-use/" target="_blank">Terms of Use</a>
+      <a href="https://www.mdb.com/disclosures/corporate-governance/" target="_blank">Governance</a>
+      <a href="https://brokercheck.finra.org/" target="_blank">FINRA BrokerCheck</a>
+    </div>
+
+    <hr class="footer-divider"/>
+
+    <div class="footer-bottom">
+      <span>© 2026 MDB Capital. All rights reserved.</span>
+      <span class="footer-nasdaq">MDB Capital — NASDAQ: MDBH</span>
+      <span>Member FINRA and SIPC</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
