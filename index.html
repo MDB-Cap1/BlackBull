@@ -164,6 +164,10 @@
     .hero-content { padding: 24px 20px 56px; }
     .resources-grid { grid-template-columns: 1fr; }
     .resource-card.featured { grid-template-columns: 1fr; }
+    .resource-card.featured img { width: 100% !important; height: auto !important; }
+    .resource-card[style*="grid-template-columns"] { display: flex !important; flex-direction: column !important; }
+    .resource-card[style*="grid-template-columns"] img { width: 100% !important; height: auto !important; max-height: 220px; object-fit: cover; }
+    .resource-card[style*="grid-column: 1 / -1"] { grid-column: 1 !important; }
     .schedule-inner { padding: 60px 20px; }
     .section { padding: 60px 20px; }
     footer { padding: 40px 20px; }
